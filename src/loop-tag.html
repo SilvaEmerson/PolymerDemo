@@ -1,0 +1,33 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
+<link rel="import" href="coin.html">
+
+<dom-module id="loop-tag">
+  <template>
+    <template is="dom-repeat" items="{{rank}}">
+      <coin-tag name="{{item.name}}" symbol="{{item.symbol}}" priceusd="{{item.price_usd}}" priceBRL="{{item.price_brl}}" number="{{item.rank}}" percent24="{{item.percent_change_24h}}" percent1h="{{item.percent_change_1h}}"></coin-tag>
+      <app-localstorage-document key="rank" data="{{rank}}"></app-localstorage-document>
+    </template>
+    </template>
+  </template>
+
+  <script>
+    class loop extends Polymer.Element{
+      static get is(){ return 'loop-tag'; }
+
+      constructor(){
+        super();
+      }
+
+      static get properties(){
+        return {
+          rank: {
+            type: Array
+          }
+        }
+      }
+    }
+
+    window.customElements.define(loop.is, loop);
+  </script>
+</dom-module>

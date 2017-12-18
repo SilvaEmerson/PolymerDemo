@@ -1,0 +1,117 @@
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+
+<link rel="import" href="coin.html">
+<link rel="lazy-import" href="my-view404.html">
+
+<dom-module id="coin-tag">
+  <template>
+    <custom-style>
+      <style>
+        .coin {
+          top: 10px;
+          left: 10%;
+          right: 40%;
+          width: 80%
+        }
+        .coin-rank {
+          position: absolute;
+          top: 5%;
+          right: 0;
+          /*left: 4%;*/
+          bottom: 45%;
+          width: 70px;
+          font-size: 60px;
+        }
+
+        .coin-header {
+          @apply --paper-font-headline;
+        }
+
+        .coin-price-brl {
+          color: var(--paper-grey-600);
+          margin: 0px 0;
+        }
+
+         /*.situation{
+          margin-left: 9px;
+        }*/
+      </style>
+    </custom-style>
+
+    <paper-card class="coin">
+      <div class="card-content">
+        <div class="coin-header">[[name]] ([[symbol]])</div>
+        <div class="coin-price-usd">US$ [[priceusd]]</div>
+        <div class="coin-price-brl">R$ [[pricebrl]]</div>
+        <div>
+          <span>24h: <iron-icon icon="[[_ico(percent24)]]" style="[[_sty(percent24)]]"></iron-icon>{{percent24}}%</span>
+          <span>1h: <iron-icon icon="[[_ico(percent1h)]]" style="[[_sty(percent1h)]]"></iron-icon>{{percent1h}}%</span>
+        </div>
+      </div>
+      <div class="coin-rank">[[number]]</div>
+    </paper-card><br><br>
+
+  </template>
+
+  <script>
+    class Coin_tag extends Polymer.Element {
+      static get is(){ return 'coin-tag'; }
+
+      constructor(){
+        super();
+      }
+      
+      static get properties(){
+        return {
+          name: {
+            type: String
+          },
+          number: {
+            type: Number
+          },
+          symbol: {
+            type: String
+          },
+          priceusd: {
+            type:Number
+          },
+          pricebrl: {
+            type:Number
+          },
+          percent24: {
+            type: Number
+          },
+          percent1h: {
+            type: Number
+          },
+          // market_cap_usd: {
+          //   type: Number
+          // }
+        }
+      }
+
+      _ico (value){
+        return ((value > 0) ? 'icons:expand-less' : 'icons:expand-more');
+      }//change the icon
+
+      _sty (value){
+        return ((value > 0) ? "color:green" : "color:red");        
+      }
+    }
+
+    window.customElements.define(Coin_tag.is, Coin_tag);
+  </script>
+</dom-module>
