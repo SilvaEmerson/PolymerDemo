@@ -16,7 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
     <title>My App</title>
-    <meta name="description" content="My App description">
+    <meta name="description" content="An Cryptocurrency app">
 
     <!--
       The `<base>` tag below is present to support two advanced deployment options:
@@ -99,9 +99,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         min-height: 100vh;
         background-color: #eeeeee;
       }
+      :host {
+        display: block;
+      }
+      img.bg {
+        /* Stick it to the upper left hand corner */
+        position: fixed;
+        top: 0;
+        left: 0;
+        /* Make it stretch to any screen size */
+        width: 100%;
+        height: auto;
+        min-height: 100%;
+        /* set min-width to image width to maintain scale */
+        min-width: 1024px;
+        /* Make the deepest layer */
+        z-index: -999;
+      }
+        @media screen and (max-width: 1024px) { /* recenter the image on smaller screens */
+          img.bg {
+            left: 50%;
+            margin-left: -512px;   /* 50% */
+          }
+        }
     </style>
   </head>
   <body>
+    <img class="bg" src="./images/crypto.jpg">
     <my-app></my-app>
     <noscript>
       Please enable JavaScript to view this website.
