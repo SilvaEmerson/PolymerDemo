@@ -45,9 +45,6 @@
           margin: 0px 0;
         }
 
-         /*.situation{
-          margin-left: 9px;
-        }*/
       </style>
     </custom-style>
 
@@ -73,7 +70,7 @@
       constructor(){
         super();
       }
-      
+
       static get properties(){
         return {
           name: {
@@ -96,10 +93,7 @@
           },
           percent1h: {
             type: Number
-          },
-          // market_cap_usd: {
-          //   type: Number
-          // }
+          }
         }
       }
 
@@ -108,7 +102,7 @@
       }//change the icon
 
       _sty (value){
-        return ((value > 0) ? "color:green" : "color:red");        
+        return ((value > 0) ? "color:green" : "color:red");
       }
     }
 
