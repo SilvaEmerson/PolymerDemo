@@ -26,6 +26,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="my-app">
   <template>
+    
   </template>
 
   <script>
@@ -34,7 +35,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       constructor(){
         super();
-      }
+      } 
 
       ready() {
         const url = "https://api.coinmarketcap.com/v1/ticker/?convert=BRL&limit=10";
@@ -43,7 +44,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           insert.rank = data;
           const shadowRoot = this.attachShadow({mode: 'open'});
           shadowRoot.appendChild(insert);
-        });
+        });//add new element on page when Promisse will resolved
       }
 
     }

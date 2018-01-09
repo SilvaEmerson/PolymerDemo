@@ -1,15 +1,40 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="coin.html">
 
 <dom-module id="loop-tag">
   <template>
+    <style>
+    app-header {
+      background-color: black;
+      color: white;
+    }
+
+    app-toolbar{
+      position: relative;
+      left: 45%;
+      right: 25%;
+    }
+    </style>
+
+      <app-header slot="header" reveals effects="waterfall">
+          <app-toolbar>
+            <div main-title>
+              Crypto Currency App
+            </div>
+          </app-toolbar>
+      </app-header>
+
     <template is="dom-repeat" items="{{rank}}">
       <coin-tag name="{{item.name}}" symbol="{{item.symbol}}" priceusd="{{item.price_usd}}" priceBRL="{{item.price_brl}}" number="{{item.rank}}" percent24="{{item.percent_change_24h}}" percent1h="{{item.percent_change_1h}}"></coin-tag>
       <app-localstorage-document key="rank" data="{{rank}}"></app-localstorage-document>
     </template>
     </template>
-  </template>
 
   <script>
     class loop extends Polymer.Element{
